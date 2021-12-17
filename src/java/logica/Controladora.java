@@ -18,6 +18,6 @@ public class Controladora {
         Usuario user = new Usuario(0, username, pass);
         Empleado emp = new Empleado(cargo, Double.parseDouble(sueldo), user, 0, nombre, apellido, direccion, dni, parser.parse(fechaNac), nacionalidad, celular, email);
     
-        controlPersis.crearEmpleado(emp, user);
+        controlPersis.crearEmpleado(emp);
     }
 }
