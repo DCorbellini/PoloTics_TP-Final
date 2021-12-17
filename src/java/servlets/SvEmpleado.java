@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,20 +46,31 @@ public class SvEmpleado extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        control.crearEmpleado(
-                request.getParameter("nombre"),
-                request.getParameter("apellido"),
-                request.getParameter("direccion"),
-                request.getParameter("dni"),
-                request.getParameter("fecha-nac"),
-                request.getParameter("nacionalidad"),
-                request.getParameter("celular"),
-                request.getParameter("email"),
-                request.getParameter("cargo"),
-                request.getParameter("sueldo"),
-                request.getParameter("user"),
-                request.getParameter("pass")
-        );
+        PrintWriter out = response.getWriter();
+        
+        try {
+            control.crearEmpleado(
+                    request.getParameter("nombre"),
+                    request.getParameter("apellido"),
+                    request.getParameter("direccion"),
+                    request.getParameter("dni"),
+                    request.getParameter("fecha-nac"),
+                    request.getParameter("nacionalidad"),
+                    request.getParameter("celular"),
+                    request.getParameter("email"),
+                    request.getParameter("cargo"),
+                    request.getParameter("sueldo"),
+                    request.getParameter("user"),
+                    request.getParameter("pass")
+            );
+            
+            response.sendRedirect("empleados.jsp");
+        } catch (Exception e) {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('" + e.getMessage() + "');");
+            out.println("location='empleados.jsp';");
+            out.println("</script>");
+        }
         
     }
 
