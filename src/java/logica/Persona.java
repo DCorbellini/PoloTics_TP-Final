@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -19,16 +21,19 @@ public class Persona implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
     @Basic
     private String nombre;
     private String apellido;
     private String direccion;
     private String dni;
-    private Date fechaNac;
     private String nacionalidad;
     private String celular;
     private String email;
 
+    @Temporal(TemporalType.DATE)
+    private Date fechaNac;
+    
     public Persona() {
     }
 
