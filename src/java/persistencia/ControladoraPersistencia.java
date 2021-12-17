@@ -9,7 +9,7 @@ public class ControladoraPersistencia {
     UsuarioJpaController userJPA = new UsuarioJpaController();
     PersonaJpaController perJPA = new PersonaJpaController();
 
-    public void crearEmpleado(Empleado emp) {                
+    public void crearEmpleado(Empleado emp) {
         userJPA.create(emp.getUser());
         empJPA.create(emp);
     }
