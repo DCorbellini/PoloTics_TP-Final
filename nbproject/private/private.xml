@@ -5,16 +5,15 @@
         <group>
             <file>file:/C:/dev/Java/TP-Final/src/java/persistencia/EmpleadoJpaController.java</file>
             <file>file:/C:/dev/Java/TP-Final/src/java/servlets/SvEmpleado.java</file>
-            <file>file:/C:/dev/Java/TP-Final/web/META-INF/context.xml</file>
-            <file>file:/C:/dev/Java/TP-Final/src/java/persistencia/UsuarioJpaController.java</file>
+            <file>file:/C:/dev/Java/TP-Final/src/java/servlets/SvUsuario.java</file>
+            <file>file:/C:/dev/Java/TP-Final/web/empleados.jsp</file>
+            <file>file:/C:/dev/Java/TP-Final/src/java/persistencia/ControladoraPersistencia.java</file>
             <file>file:/C:/dev/Java/TP-Final/src/java/logica/Usuario.java</file>
             <file>file:/C:/dev/Java/TP-Final/web/index.jsp</file>
-            <file>file:/C:/dev/Java/TP-Final/src/java/logica/Empleado.java</file>
-            <file>file:/C:/dev/Java/TP-Final/src/java/persistencia/PersonaJpaController.java</file>
-            <file>file:/C:/dev/Java/TP-Final/src/java/servlets/SvUsuario.java</file>
-            <file>file:/C:/dev/Java/TP-Final/src/java/persistencia/ControladoraPersistencia.java</file>
             <file>file:/C:/dev/Java/TP-Final/src/java/logica/Controladora.java</file>
-            <file>file:/C:/dev/Java/TP-Final/web/META-INF/persistence.xml</file>
+            <file>file:/C:/dev/Java/TP-Final/src/java/logica/Cliente.java</file>
+            <file>file:/C:/dev/Java/TP-Final/src/java/persistencia/ClienteJpaController.java</file>
+            <file>file:/C:/dev/Java/TP-Final/src/java/logica/Empleado.java</file>
             <file>file:/C:/dev/Java/TP-Final/src/java/logica/Persona.java</file>
         </group>
     </open-files>

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 15-Dec-2021, 5:29:14 PM
-    Author     : dcorb
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,7 +15,7 @@
         <% } %>
         
         <form>
-            <a id="aEmpleados" href="empleados.jsp">Empleados</a> 
+            <a id="aEmpleados" href="empleados.jsp">Empleado</a>
         </form>
         
     </body>
