@@ -1,9 +1,3 @@
-<%-- 
-    Document   : empleados
-    Created on : 16-Dec-2021, 6:19:58 PM
-    Author     : dcorb
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

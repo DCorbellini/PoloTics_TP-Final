@@ -3,20 +3,15 @@ package logica;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name = "CLIENTES")
-public class Persona implements Serializable {
+@MappedSuperclass
+public abstract class Persona implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,6 +28,7 @@ public class Persona implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date fechaNac;
+    
     
     public Persona() {
     }
@@ -120,7 +116,5 @@ public class Persona implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
     
 }

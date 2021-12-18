@@ -17,6 +17,7 @@ public class Empleado extends Persona implements Serializable {
     private Usuario user;
 
     public Empleado() {
+        super();
     }
 
     public Empleado(String cargo, Double sueldo, Usuario user, int id, String nombre, String apellido, String direccion, String dni, Date fechaNac, String nacionalidad, String celular, String email) {

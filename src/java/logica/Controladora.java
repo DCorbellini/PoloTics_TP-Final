@@ -3,8 +3,6 @@ package logica;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import persistencia.ControladoraPersistencia;
 
 public class Controladora {
@@ -44,9 +42,13 @@ public class Controladora {
             throw new Exception("El sueldo ingresado no es valido");
         }
         
-        Usuario user = new Usuario(0, username, pass);
+        Usuario user = new Usuario(username, pass);
         Empleado emp = new Empleado(cargo, sueldo, user, 0, nombre, apellido, direccion, dni, fechaNac, nacionalidad, celular, email);
     
-        controlPersis.crearEmpleado(emp);
+        try {
+            controlPersis.crearEmpleado(emp);
+        } catch (Exception e) {
+            throw new Exception("Nombre de usuario ya esta en uso");
+        }
     }
 }
