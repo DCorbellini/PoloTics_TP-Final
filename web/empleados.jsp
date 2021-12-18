@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="logica.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -49,6 +50,7 @@
           <% 
             HttpSession sesion = request.getSession();
             List<Empleado> empleados = (List) sesion.getAttribute("empleados");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             for (Empleado emp : empleados) {
           %>
             <tr>
@@ -58,7 +60,7 @@
               <td><%= emp.getNacionalidad() %></td>
               <td><%= emp.getCelular() %></td>
               <td><%= emp.getEmail() %></td>
-              <td><%= emp.getFechaNac() %></td>
+              <td><%= format.format(emp.getFechaNac()) %></td>
               <td><%= emp.getCargo() %></td>
               <td><%= emp.getSueldo() %></td>
               <td><%= emp.getUser().getUser() %></td> 
