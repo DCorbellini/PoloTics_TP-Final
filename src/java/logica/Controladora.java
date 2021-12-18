@@ -3,6 +3,7 @@ package logica;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import persistencia.ControladoraPersistencia;
 
 public class Controladora {
@@ -50,5 +51,9 @@ public class Controladora {
         } catch (Exception e) {
             throw new Exception("Nombre de usuario ya esta en uso");
         }
+    }
+
+    public List<Empleado> traerEmpleados() {
+        return controlPersis.traerEmpleados();
     }
 }

@@ -19,10 +19,11 @@
               <form action="SvCrearEmpleado" method="POST">
               <div class="modal-header">						
                 <h4 class="modal-title">Editar Empleado</h4>
-                <a href="empleados.jsp" class="close" aria-hidden="true"><i class="material-icons" style="color: red;">cancel</i></a>
+                <form action="SvEmpleado" method="GET">
+                  <a href="SvEmpleado" class="close" aria-hidden="true"><i class="material-icons" style="color: red;">cancel</i></a>
+                </form>
               </div>
                   
-              <input type="hidden" name="id" value="<%--= TBD --%>">
 
               <div class="modal-body">
                 <label>Nombre</label>
@@ -74,7 +75,9 @@
               </div>
 
               <div class="modal-footer">
-                <a href="empleados.jsp"><button type="button" class="btn btn-default">Cancelar</button></a>
+                <form action="SvEmpleado" method="GET" style="display: inline-block">
+                  <a href="SvEmpleado"><button type="button" class="btn btn-default">Cancelar</button></a>
+                </form>
                 <input type="submit" class="btn btn-success" value="Guardar">
               </div>
             </form>

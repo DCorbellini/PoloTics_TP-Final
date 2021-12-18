@@ -14,8 +14,8 @@
             
         <% } %>
         
-        <form>
-            <a id="aEmpleados" href="empleados.jsp">Empleado</a>
+        <form action="SvEmpleado" method="GET">
+            <a id="aEmpleados" href="SvEmpleado">Empleados</a>
         </form>
         
     </body>

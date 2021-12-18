@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="logica.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <head>
   <meta charset="utf-8">
@@ -44,30 +46,36 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>12351265</td>
-            <td>Thomas Hardy</td>
-            <td>89 Chiaroscuro Rd, Portland, USA</td>
-            <td>USA</td>
-            <td>(171) 555-2222</td>
-            <td>thomashardy@mail.com</td>
-            <td>2001-01-01</td>
-            <td>Empleado</td>
-            <td>Pesos</td>
-            <td>HOAL</td>
-            <td>
-              <form action="SvEditarEmpleado" method="POST">
-                <input type="hidden" name="id" value="<%--= TBD --%>">
-                <a href="editar-empleado.jsp" class="edit"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-              </form>
-            </td>
-            <td>
-              <form action="SvEliminarEmpleado" method="POST">
-                <input type="hidden" name="id" value="<%--= TBD --%>">
-                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-              </form>
-            </td>
-          </tr>
+          <% 
+            HttpSession sesion = request.getSession();
+            List<Empleado> empleados = (List) sesion.getAttribute("empleados");
+            for (Empleado emp : empleados) {
+          %>
+            <tr>
+              <td><%= emp.getDni() %></td>
+              <td><%= emp.getNombre() + " " + emp.getApellido() %></td>
+              <td><%= emp.getDireccion() %></td>
+              <td><%= emp.getNacionalidad() %></td>
+              <td><%= emp.getCelular() %></td>
+              <td><%= emp.getEmail() %></td>
+              <td><%= emp.getFechaNac() %></td>
+              <td><%= emp.getCargo() %></td>
+              <td><%= emp.getSueldo() %></td>
+              <td><%= emp.getUser().getUser() %></td> 
+              <td>
+                <form action="SvEditarEmpleado" method="POST">
+                  <input type="hidden" name="id" value="<%= emp.getId() %>">
+                  <a href="editar-empleado.jsp" class="edit"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                </form>
+              </td>
+              <td>
+                <form action="SvEliminarEmpleado" method="POST">
+                  <input type="hidden" name="id" value="<%= emp.getId() %>">
+                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                </form>
+              </td>
+            </tr> 
+          <% } %>
         </tbody>
       </table>
     </div>

@@ -81,12 +81,13 @@ public class SvCrearEmpleado extends HttpServlet {
                     request.getParameter("pass")
             );
             
-            response.sendRedirect("empleados.jsp");
+            response.sendRedirect("crear-empleado.jsp");
         } catch (Exception e) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('" + e.getMessage() + "');");
             out.println("location='empleados.jsp';");
             out.println("</script>");
+            response.sendRedirect("crear-empleado.jsp");
         }
     }
 

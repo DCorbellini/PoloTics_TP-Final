@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.util.List;
 import logica.Empleado;
 import logica.Usuario;
 
@@ -12,6 +13,10 @@ public class ControladoraPersistencia {
     public void crearEmpleado(Empleado emp) throws Exception {
         userJPA.create(emp.getUser());
         empJPA.create(emp);
+    }
+
+    public List<Empleado> traerEmpleados() {
+        return empJPA.findEmpleadoEntities();
     }
     
 }

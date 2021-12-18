@@ -2,12 +2,15 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import logica.Controladora;
+import logica.Empleado;
 
 @WebServlet(name = "SvEmpleado", urlPatterns = {"/SvEmpleado"})
 public class SvEmpleado extends HttpServlet {
@@ -31,7 +34,11 @@ public class SvEmpleado extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        List <Empleado> empleados = control.traerEmpleados();
+        
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("empleados", empleados);
+        response.sendRedirect("empleados.jsp");
     }
 
     /**
@@ -44,35 +51,7 @@ public class SvEmpleado extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        PrintWriter out = response.getWriter();
-        
-        try {
-            control.crearEmpleado(
-                    request.getParameter("nombre"),
-                    request.getParameter("apellido"),
-                    request.getParameter("direccion"),
-                    request.getParameter("dni"),
-                    request.getParameter("fecha-nac"),
-                    request.getParameter("nacionalidad"),
-                    request.getParameter("celular"),
-                    request.getParameter("email"),
-                    request.getParameter("cargo"),
-                    request.getParameter("sueldo"),
-                    request.getParameter("user"),
-                    request.getParameter("pass")
-            );
-            
-            response.sendRedirect("empleados.jsp");
-        } catch (Exception e) {
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('" + e.getMessage() + "');");
-            out.println("location='empleados.jsp';");
-            out.println("</script>");
-        }
-        
-    }
+            throws ServletException, IOException { }
 
     /**
      * Returns a short description of the servlet.
