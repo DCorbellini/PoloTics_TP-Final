@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Empleados</title>
-  <link rel='stylesheet' type='text/css' media='screen' href='assets/css/main.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/main.css'>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,7 +25,7 @@
             <h2>Gestionar <b>Empleados</b></h2>
           </div>
           <div class="col-xs-6">
-            <a href="crear-empleado.jsp" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Agregar Empleado</span></a>				
+            <a href="nuevo.jsp" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Agregar Empleado</span></a>				
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
               <td>
                 <form action="SvEditarEmpleado" method="POST">
                   <input type="hidden" name="id" value="<%= emp.getId() %>">
-                  <a href="editar-empleado.jsp" class="edit"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                  <a href="editar.jsp" class="edit"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
                 </form>
               </td>
               <td>

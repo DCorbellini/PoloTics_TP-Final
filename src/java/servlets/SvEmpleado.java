@@ -38,7 +38,12 @@ public class SvEmpleado extends HttpServlet {
         
         HttpSession sesion = request.getSession();
         sesion.setAttribute("empleados", empleados);
-        response.sendRedirect("empleados.jsp");
+        // como lo mando a una carpeta por default intenta abrir el index
+        // lo hice asi para que la url quede "bien"
+        // en vez de ir a empleados.jsp va a empleados
+        // en vez de nuevo-empleado.jsp es empleados/nuevo.jsp
+        // no es nada mas que una cuestion estetica
+        response.sendRedirect("empleados/");
     }
 
     /**

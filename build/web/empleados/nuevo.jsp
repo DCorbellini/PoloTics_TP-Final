@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel='stylesheet' type='text/css' media='screen' href='assets/css/main.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/main.css'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,7 +20,7 @@
               <div class="modal-header">						
                 <h4 class="modal-title">Nuevo Empleado</h4>
                 <form action="SvEmpleado" method="GET">
-                  <a href="SvEmpleado" class="close" aria-hidden="true"><i class="material-icons" style="color: red;">cancel</i></a>
+                  <a href="../SvEmpleado" class="close" aria-hidden="true"><i class="material-icons" style="color: red;">cancel</i></a>
                 </form>
               </div>
 
@@ -75,7 +75,7 @@
 
               <div class="modal-footer">
                 <form action="SvEmpleado" method="GET" style="display: inline-block">
-                  <a href="SvEmpleado"><button type="button" class="btn btn-default">Cancelar</button></a>
+                  <a href="../SvEmpleado"><button type="button" class="btn btn-default">Cancelar</button></a>
                 </form>
                 <input type="submit" class="btn btn-success" value="Guardar">
               </div>
