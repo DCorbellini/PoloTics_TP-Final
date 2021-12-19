@@ -69,15 +69,16 @@
                         <div class="modal-body">
                             <label>Email</label>
                             <input class="form-control" type="email" name="email" required value="<%= cli.getEmail()%>">
+                        </div>
 
-                            <input type="hidden" name="id" required value="<%= cli.getId()%>">
+                        <input type="hidden" name="id" required value="<%= cli.getId()%>">
 
-                            <div class="modal-footer">
-                                <a href="."><button type="button" class="btn btn-default">Cancelar</button></a>
-                                <button type="submit" class="btn btn-success">Guardar</button>
-                            </div>
+                        <div class="modal-footer">
+                            <a href="."><button type="button" class="btn btn-default">Cancelar</button></a>
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
 
-                            <% } %>
+                        <% } %>
                     </form>
                 </div>
             </div>
