@@ -16,7 +16,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import logica.Paquete;
 import persistencia.exceptions.NonexistentEntityException;
-import persistencia.exceptions.PreexistingEntityException;
 
 /**
  *
@@ -32,24 +31,18 @@ public class PaqueteJpaController implements Serializable {
     public PaqueteJpaController() {
         this.emf = Persistence.createEntityManagerFactory("TP-FinalPU");
     }
-    
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public void create(Paquete paquete) throws PreexistingEntityException, Exception {
+    public void create(Paquete paquete) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(paquete);
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findPaquete(paquete.getId()) != null) {
-                throw new PreexistingEntityException("Paquete " + paquete + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();

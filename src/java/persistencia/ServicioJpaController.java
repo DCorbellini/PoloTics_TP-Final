@@ -16,7 +16,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import logica.Servicio;
 import persistencia.exceptions.NonexistentEntityException;
-import persistencia.exceptions.PreexistingEntityException;
 
 /**
  *
@@ -37,18 +36,13 @@ public class ServicioJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Servicio servicio) throws PreexistingEntityException, Exception {
+    public void create(Servicio servicio) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(servicio);
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findServicio(servicio.getId()) != null) {
-                throw new PreexistingEntityException("Servicio " + servicio + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();

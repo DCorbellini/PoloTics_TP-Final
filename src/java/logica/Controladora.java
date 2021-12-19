@@ -140,4 +140,52 @@ public class Controladora {
         return null;
         
     }
+
+    public List<Servicio> traerServicios() {
+        return controlPersis.traerServicios();
+    }
+
+    public void crearServicio(String nombre, String descripcion, String destino, String fechaStr, String precioStr, String tipo) throws Exception {
+        
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha;
+        Double precio = Double.parseDouble(precioStr);
+        
+        // puse estas validaciones antes de descubrir que existia el atributo required
+        // lo deje porque me parecio que no esta de más verificar en ambos lados
+        if (nombre.isEmpty()) throw new Exception("Ingrese el nombre");
+        if (descripcion.isEmpty()) throw new Exception("Ingrese la descripcion");
+        if (destino.isEmpty()) throw new Exception("Ingrese el destino");
+        if (fechaStr.isEmpty()) throw new Exception("Ingrese la fecha");
+        if (precioStr.isEmpty()) throw new Exception("Ingrese el precio");
+        if (tipo.isEmpty()) throw new Exception("Ingrese el tipo");
+        
+        // teoricamente esto nunca va a fallar, pero...
+        try {
+            fecha = parser.parse(fechaStr);
+        } catch (ParseException ex) {
+            throw new Exception("La fecha ingresada es invalida, por favor use el formato aaaa-mm-dd");
+        }
+        
+        Servicio ser = new Servicio(0, nombre, descripcion, destino, precio, tipo, fecha);
+    
+        controlPersis.crearServicio(ser);
+        
+    }
+
+    public Servicio traerServicio(int id) {
+        return controlPersis.traerServicio(id);
+    }
+
+    public void editarServicio(Servicio ser) throws Exception {
+        controlPersis.editarServicio(ser);
+    }
+
+    public void eliminarCliente(int id) {
+        controlPersis.eliminarCliente(id);
+    }
+
+    public void eliminarServicio(int id) {
+        controlPersis.eliminarServicio(id);
+    }
 }

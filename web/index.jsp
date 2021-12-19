@@ -32,6 +32,10 @@
             <button type="submit">Clientes</button>
         </form>
 
+        <form action="SvServicio" method="GET">
+            <button type="submit">Servicios</button>
+        </form>
+
 
         <% }%>
     </body>
