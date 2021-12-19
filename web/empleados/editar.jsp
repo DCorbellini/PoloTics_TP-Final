@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel='stylesheet' type='text/css' media='screen' href='./assets/css/main.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/main.css'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,7 +16,7 @@
     </head>
     
     <body>
-        <div id="addEmployeeModal" class="form">
+        <div id="editEmployeeModal" class="form">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="../SvEditarEmpleado" method="GET">
