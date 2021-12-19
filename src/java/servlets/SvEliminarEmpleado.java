@@ -1,27 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import logica.Controladora;
+import logica.Empleado;
 
-/**
- *
- * @author dcorb
- */
-@WebServlet(name = "SvCrearEmpleado", urlPatterns = {"/SvCrearEmpleado"})
-public class SvCrearEmpleado extends HttpServlet {
 
-    Controladora control = new Controladora();
+@WebServlet(name = "SvEliminarEmpleado", urlPatterns = {"/SvEliminarEmpleado"})
+public class SvEliminarEmpleado extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,9 +25,7 @@ public class SvCrearEmpleado extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-    }
+            throws ServletException, IOException { }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -62,31 +53,14 @@ public class SvCrearEmpleado extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Controladora control = new Controladora();
+        control.eliminarEmpleado(Integer.parseInt(request.getParameter("id")));
         
-        PrintWriter out = response.getWriter();
+        List <Empleado> empleados = control.traerEmpleados();
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("empleados", empleados);
         
-        try {
-            control.crearEmpleado(
-                    request.getParameter("nombre"),
-                    request.getParameter("apellido"),
-                    request.getParameter("direccion"),
-                    request.getParameter("dni"),
-                    request.getParameter("fecha-nac"),
-                    request.getParameter("nacionalidad"),
-                    request.getParameter("celular"),
-                    request.getParameter("email"),
-                    request.getParameter("cargo"),
-                    request.getParameter("sueldo"),
-                    request.getParameter("user"),
-                    request.getParameter("pass")
-            );
-        } catch (Exception e) {
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('" + e.getMessage() + "');");
-            out.println("location='empleados.jsp';");
-            out.println("</script>");
-        }
-        response.sendRedirect("empleados/nuevo.jsp");
+        response.sendRedirect("empleados/");
     }
 
     /**

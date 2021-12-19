@@ -56,4 +56,8 @@ public class Controladora {
     public List<Empleado> traerEmpleados() {
         return controlPersis.traerEmpleados();
     }
+
+    public void eliminarEmpleado(int id) {
+        controlPersis.eliminarEmpleado(id);
+    }
 }

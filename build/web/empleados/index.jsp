@@ -71,9 +71,9 @@
                 </form>
               </td>
               <td>
-                <form action="SvEliminarEmpleado" method="POST">
+                <form action="../SvEliminarEmpleado" method="POST">
                   <input type="hidden" name="id" value="<%= emp.getId() %>">
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                  <button type="submit" class="delete"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></button>
                 </form>
               </td>
             </tr> 
@@ -83,26 +83,5 @@
     </div>
   </div>        
   </div>
-<!-- Delete Modal HTML -->
-<!-- asumo que el usuario de este sistema tiene acceso eliminar un empleado --> 
-<div id="deleteEmployeeModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form>
-        <div class="modal-header">						
-          <h4 class="modal-title">Eliminar Empleado</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">					
-          <p>Esta seguro que desea eliminar a <%--= TODO: emp.getNombnre()? --%>?</p>
-        </div>
-        <div class="modal-footer">
-          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-          <input type="submit" class="btn btn-danger" value="Eliminar">
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 </body>
 </html>
