@@ -69,5 +69,9 @@ public class ControladoraPersistencia {
     public List<Cliente> traerClientes() {
         return cliJPA.findClienteEntities();
     }
+
+    public void crearCliente(Cliente cli) {
+        cliJPA.create(cli);
+    }
     
 }

@@ -79,4 +79,33 @@ public class Controladora {
     public List<Cliente> traerClientes() {
         return controlPersis.traerClientes();
     }
+
+    public void crearCliente(String nombre, String apellido, String direccion, String dni, String fechaNacStr, String nacionalidad, String celular, String email) throws Exception {
+
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaNac;
+        Double sueldo;
+        
+        // puse estas validaciones antes de descubrir que existia el atributo required
+        // lo deje porque me parecio que no esta de más verificar en ambos lados
+        if (nombre.isEmpty()) throw new Exception("Ingrese el nombre");
+        if (apellido.isEmpty()) throw new Exception("Ingrese el apellido");
+        if (direccion.isEmpty()) throw new Exception("Ingrese la direccion");
+        if (dni.isEmpty()) throw new Exception("Ingrese el dni");
+        if (fechaNacStr.isEmpty()) throw new Exception("Ingrese la fecha de nacimiento");
+        if (nacionalidad.isEmpty()) throw new Exception("Ingrese la nacionalidad");
+        if (celular.isEmpty()) throw new Exception("Ingrese el celular");
+        if (email.isEmpty()) throw new Exception("Ingrese el email");
+        
+        // teoricamente esto nunca va a fallar, pero...
+        try {
+            fechaNac = parser.parse(fechaNacStr);
+        } catch (ParseException ex) {
+            throw new Exception("La fecha ingresada es invalida, por favor use el formato aaaa-mm-dd");
+        }
+        
+        Cliente cli = new Cliente(0, nombre, apellido, direccion, dni, fechaNac, nacionalidad, celular, email);
+    
+        controlPersis.crearCliente(cli);
+    }
 }
