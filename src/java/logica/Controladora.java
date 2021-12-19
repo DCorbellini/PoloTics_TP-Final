@@ -75,4 +75,8 @@ public class Controladora {
         }
     
     }
+
+    public List<Cliente> traerClientes() {
+        return controlPersis.traerClientes();
+    }
 }

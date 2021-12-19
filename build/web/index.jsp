@@ -14,9 +14,15 @@
             
         <% } %>
         
+        
         <form action="SvEmpleado" method="GET">
-            <a id="aEmpleados" href="SvEmpleado">Empleados</a>
+            <button type="submit">Empleados</button>
         </form>
+        
+        <form action="SvCliente" method="GET">
+            <button type="submit">Clientes</button>
+        </form>
+        
         
     </body>
 </html>

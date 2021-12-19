@@ -1,12 +1,12 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
-<%@page import="logica.Empleado"%>
+<%@page import="logica.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Empleados</title>
+  <title>Clientes</title>
   <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/main.css'>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -22,10 +22,10 @@
       <div class="table-title">
         <div class="row">
           <div class="col-xs-6">
-            <h2>Gestionar <b>Empleados</b></h2>
+            <h2>Gestionar <b>Clientes</b></h2>
           </div>
           <div class="col-xs-6">
-            <a href="nuevo.jsp" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Agregar Empleado</span></a>				
+            <a href="nuevo.jsp" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Agregar Cliente</span></a>				
           </div>
         </div>
       </div>
@@ -39,9 +39,6 @@
             <th>Celular</th>
             <th>email</th>
             <th>Fecha de Nacimiento</th>
-            <th>Cargo</th>
-            <th>Sueldo</th>
-            <th>Usuario</th>
             <th></th>
             <th></th>
           </tr>
@@ -49,30 +46,27 @@
         <tbody>
           <% 
             HttpSession sesion = request.getSession();
-            List<Empleado> empleados = (List) sesion.getAttribute("empleados");
+            List<Cliente> clientes = (List) sesion.getAttribute("clientes");
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            for (Empleado emp : empleados) {
+            for (Cliente cli : clientes) {
           %>
             <tr>
-              <td><%= emp.getDni() %></td>
-              <td><%= emp.getNombre() + " " + emp.getApellido() %></td>
-              <td><%= emp.getDireccion() %></td>
-              <td><%= emp.getNacionalidad() %></td>
-              <td><%= emp.getCelular() %></td>
-              <td><%= emp.getEmail() %></td>
-              <td><%= format.format(emp.getFechaNac()) %></td>
-              <td><%= emp.getCargo() %></td>
-              <td><%= emp.getSueldo() %></td>
-              <td><%= emp.getUser().getUser() %></td> 
+              <td><%= cli.getDni() %></td>
+              <td><%= cli.getNombre() + " " + cli.getApellido() %></td>
+              <td><%= cli.getDireccion() %></td>
+              <td><%= cli.getNacionalidad() %></td>
+              <td><%= cli.getCelular() %></td>
+              <td><%= cli.getEmail() %></td>
+              <td><%= format.format(cli.getFechaNac()) %></td>
               <td>
-                <form action="../SvEditarEmpleado" method="POST">
-                  <input type="hidden" name="id" value="<%= emp.getId() %>">
+                <form action="../SvEditarCliente" method="POST">
+                  <input type="hidden" name="id" value="<%= cli.getId() %>">
                   <button type="submit" class="edit"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></button>
                 </form>
               </td>
               <td>
-                <form action="../SvEliminarEmpleado" method="POST">
-                  <input type="hidden" name="id" value="<%= emp.getId() %>">
+                <form action="../SvEliminarCliente" method="POST">
+                  <input type="hidden" name="id" value="<%= cli.getId() %>">
                   <button type="submit" class="delete"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></button>
                 </form>
               </td>

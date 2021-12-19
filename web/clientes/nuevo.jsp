@@ -11,16 +11,16 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>Nuevo Empleado</title>
+        <title>Nuevo Cliente</title>
     </head>
 
     <body>
         <div id="addEmployeeModal" class="form">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="../SvCrearEmpleado" method="POST">
+                    <form action="../SvCrearCliente" method="POST">
                         <div class="modal-header">
-                            <h4 class="modal-title">Nuevo Empleado</h4>
+                            <h4 class="modal-title">Nuevo Cliente</h4>
                         </div>
 
                         <div class="modal-body">
@@ -54,23 +54,6 @@
                         <div class="modal-body">
                             <label>Email</label>
                             <input class="form-control" type="email" name="email" required>
-                        </div>
-                        <div class="modal-body">
-                            <label>Cargo</label>
-                            <input class="form-control" type="text" name="cargo" required>
-                        </div>
-                        <div class="modal-body">
-                            <label>Sueldo</label>
-                            <input class="form-control" type="number" step="0.01" min=0 name="sueldo" required>
-                        </div>
-                        <div class="modal-body">
-                            <label>Usuario</label>
-                            <input class="form-control" type="text" name="user" required>
-                        </div>
-                        <div class="modal-body">
-                            <label>Contraseña</label>
-                            <input class="form-control" type="password" name="pass" required>
-                        </div>
 
                         <div class="modal-footer">
                             <a href="."><button type="button" class="btn btn-default">Cancelar</button></a>

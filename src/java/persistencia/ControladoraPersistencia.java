@@ -3,6 +3,7 @@ package persistencia;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import logica.Cliente;
 import logica.Empleado;
 import logica.Usuario;
 import persistencia.exceptions.NonexistentEntityException;
@@ -11,7 +12,7 @@ public class ControladoraPersistencia {
     
     EmpleadoJpaController empJPA = new EmpleadoJpaController();
     UsuarioJpaController userJPA = new UsuarioJpaController();
-    ClienteJpaController perJPA = new ClienteJpaController();
+    ClienteJpaController cliJPA = new ClienteJpaController();
 
     public void crearEmpleado(Empleado emp) throws Exception {
         userJPA.create(emp.getUser());
@@ -63,6 +64,10 @@ public class ControladoraPersistencia {
         }
         
         empJPA.edit(emp);
+    }
+
+    public List<Cliente> traerClientes() {
+        return cliJPA.findClienteEntities();
     }
     
 }
