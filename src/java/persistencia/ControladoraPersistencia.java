@@ -73,5 +73,13 @@ public class ControladoraPersistencia {
     public void crearCliente(Cliente cli) {
         cliJPA.create(cli);
     }
+
+    public Cliente traerCliente(int id) {
+        return cliJPA.findCliente(id);
+    }
+
+    public void editarCliente(Cliente cli) throws Exception {
+        cliJPA.edit(cli);
+    }
     
 }

@@ -7,11 +7,20 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import logica.Controladora;
+import logica.Cliente;
 
 /**
  *
@@ -31,20 +40,9 @@ public class SvEditarCliente extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SvEditarCliente</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SvEditarCliente at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
+
+    Controladora control = new Controladora();
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -58,7 +56,57 @@ public class SvEditarCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        // este try-catch esta para el parseo de la fecha
+        // no va a fallar nunca porque el front fuerza que la fecha tenga el formato correcto
+        // pero el compilador me lo pide
+        try {
+            
+            PrintWriter out = response.getWriter();
+            
+            SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+            Date fechaNac;
+            int id = Integer.parseInt(request.getParameter("id"));
+            fechaNac = parser.parse(request.getParameter("fecha-nac"));
+            
+            Cliente cli = new Cliente(
+                    id,
+                    request.getParameter("nombre"),
+                    request.getParameter("apellido"),
+                    request.getParameter("direccion"),
+                    request.getParameter("dni"),
+                    fechaNac,
+                    request.getParameter("nacionalidad"),
+                    request.getParameter("celular"),
+                    request.getParameter("email")
+                    
+            );
+            
+            // guardo el estado actual del cliente para que no haya que volver a modificar los datos en caso de fallo
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("cliente", cli);
+            
+            // cliente no falla pero un sistema de manejo de excepciones nunca esta de más
+            try {
+                control.editarCliente(cli);
+
+                List <Cliente> clientes = control.traerClientes();
+                sesion.setAttribute("clientes", clientes);
+                
+                response.sendRedirect("clientes/");
+            } catch (Exception ex) {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('" + ex.getMessage() + "');");
+                out.println("location='clientes/editar.jsp';");
+                out.println("</script>");
+                
+                response.sendRedirect("clientes/editar.jsp");
+            }
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(SvEditarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -72,7 +120,13 @@ public class SvEditarCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Cliente cli = control.traerCliente(Integer.parseInt(request.getParameter("id")));
+        
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("cliente", cli);
+        
+        response.sendRedirect("clientes/editar.jsp");
+        
     }
 
     /**

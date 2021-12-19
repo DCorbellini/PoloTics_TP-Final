@@ -108,4 +108,12 @@ public class Controladora {
     
         controlPersis.crearCliente(cli);
     }
+
+    public void editarCliente(Cliente cli) throws Exception {
+        controlPersis.editarCliente(cli);
+    }
+
+    public Cliente traerCliente(int id) {
+        return controlPersis.traerCliente(id);
+    }
 }
