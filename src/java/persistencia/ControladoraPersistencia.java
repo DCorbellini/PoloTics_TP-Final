@@ -30,5 +30,39 @@ public class ControladoraPersistencia {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public Empleado traerEmpleado(int id) {
+        return empJPA.findEmpleado(id);
+    }
+
+    public void editarEmpleado(Empleado emp) throws Exception {
+        // user es la primary key de el usuario, entonces no puedo editarla
+        // por eso me fijo si se esta intentando cambiar el nombre de usuario
+        // si es asi intento crear el nuevo usuario
+        // si ese nombre no esta en uso elimino el usuario anterior y guardo el nuevo empleado
+        // si ya esta en uso se levanta una excepcion
+        // si no se cambia el nombre de usuario edito el usuario de forma normal
+        
+        // el usuario anterior es distinto al nuevo usuario?
+        if (empJPA.findEmpleado(emp.getId()).getUser().getUser() != emp.getUser().getUser()) {
+            
+            // crear nuevo usuario
+            // si create falla la excepcion se delega a la controladora
+            userJPA.create(emp.getUser());
+            
+            // eliminar usuario anterior
+            userJPA.destroy(empJPA.findEmpleado(emp.getId()).getUser().getUser());
+            
+        }
+        else {
+            
+            // edutar usuario
+            // no hace falta ninguna verificacion especial
+            userJPA.edit(emp.getUser());
+            
+        }
+        
+        empJPA.edit(emp);
+    }
     
 }

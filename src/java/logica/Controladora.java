@@ -60,4 +60,19 @@ public class Controladora {
     public void eliminarEmpleado(int id) {
         controlPersis.eliminarEmpleado(id);
     }
+
+    public Empleado traerEmpleado(int id) {
+        return controlPersis.traerEmpleado(id);
+    }
+
+    public void editarEmpleado(Empleado emp) throws Exception { 
+        
+    
+        try {
+            controlPersis.editarEmpleado(emp);
+        } catch (Exception e) {
+            throw new Exception("Nombre de usuario ya esta en uso");
+        }
+    
+    }
 }

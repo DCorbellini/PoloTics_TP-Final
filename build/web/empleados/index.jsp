@@ -65,9 +65,9 @@
               <td><%= emp.getSueldo() %></td>
               <td><%= emp.getUser().getUser() %></td> 
               <td>
-                <form action="SvEditarEmpleado" method="POST">
+                <form action="../SvEditarEmpleado" method="POST">
                   <input type="hidden" name="id" value="<%= emp.getId() %>">
-                  <a href="editar.jsp" class="edit"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                  <button type="submit" class="edit"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></button>
                 </form>
               </td>
               <td>
