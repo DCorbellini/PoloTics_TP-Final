@@ -116,4 +116,28 @@ public class Controladora {
     public Cliente traerCliente(int id) {
         return controlPersis.traerCliente(id);
     }
+
+    public Empleado traerEmpleado(String user, String pass) {
+        
+        List<Empleado> empleados = controlPersis.traerEmpleados();
+        
+        if (!empleados.isEmpty())
+        {
+            for (Empleado emp : empleados) {
+                if (user.equals(emp.getUser().getUser()) && pass.equals(emp.getUser().getPass())) {
+                    return emp;
+                }
+            }
+        }
+        
+        /* TODO 
+         *  
+         * Si no hay usuario tendrias que dejarlo pasar para que cree un usuario
+         * Podes hacer un empleado con id invalida
+         * 
+         */
+        
+        return null;
+        
+    }
 }

@@ -1,3 +1,4 @@
+<%@page import="logica.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,13 @@
     </head>
 
     <body>
+        <%
+            HttpSession sesion = request.getSession();
+            Empleado usuario = (Empleado) sesion.getAttribute("usuario");
+            if (usuario == null) {
+                response.sendRedirect("../login.jsp");
+            } else {
+        %>
         <div id="addEmployeeModal" class="form">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -55,14 +63,15 @@
                             <label>Email</label>
                             <input class="form-control" type="email" name="email" required>
 
-                        <div class="modal-footer">
-                            <a href="."><button type="button" class="btn btn-default">Cancelar</button></a>
-                            <button type="submit" class="btn btn-success">Guardar</button>
-                        </div>
+                            <div class="modal-footer">
+                                <a href="."><button type="button" class="btn btn-default">Cancelar</button></a>
+                                <button type="submit" class="btn btn-success">Guardar</button>
+                            </div>
                     </form>
                 </div>
             </div>
         </div>
+        <% }%>
     </body>
 
 </html>
