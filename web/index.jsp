@@ -48,7 +48,7 @@
                 </li>
             </ul>
 
-            <form action="../SvLogout" method="POST">
+            <form action="./SvLogout" method="POST">
                 <button class="btn btn-danger" type="submit"><i class="material-icons">logout</i></button>
             </form>
         </div>
