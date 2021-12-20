@@ -188,4 +188,8 @@ public class Controladora {
     public void eliminarServicio(int id) {
         controlPersis.eliminarServicio(id);
     }
+
+    public List<Paquete> traerPaquetes() {
+        return controlPersis.traerPaquetes();
+    }
 }

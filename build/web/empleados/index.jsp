@@ -29,19 +29,29 @@
                 <a class="nav-link" href=".."><b>Inicio</b></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../ventas/">ventas</a>
+                <form action="../SvVenta" method="GET">
+                    <input class="nav-link" type="submit" value="ventas"/>
+                </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../servicios/">servicios</a>
+                <form action="../SvServicio" method="GET">
+                    <input class="nav-link" type="submit" value="servicios"/>
+                </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../paquetes/">paquetes</a>
+                <form action="../SvPaquete" method="GET">
+                    <input class="nav-link" type="submit" value="paquetes"/>
+                </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../clientes/">clientes</a>
+                <form action="../SvCliente" method="GET">
+                    <input class="nav-link" type="submit" value="clientes"/>
+                </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="../empleados/" style="pointer-events: none">empleados</a>
+                <form action="../SvEmpleado" method="GET">
+                    <input class="nav-link" type="submit" disabled="disabled" value="empleados"/>
+                </form>
             </li>
         </ul>
 

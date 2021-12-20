@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.Cliente;
 import logica.Empleado;
+import logica.Paquete;
 import logica.Servicio;
 import logica.Usuario;
 import persistencia.exceptions.NonexistentEntityException;
@@ -127,6 +128,10 @@ public class ControladoraPersistencia {
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public List<Paquete> traerPaquetes() {
+        return paqJPA.findPaqueteEntities();
     }
 
 }

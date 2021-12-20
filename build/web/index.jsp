@@ -13,36 +13,46 @@
         <title>Turismo</title>
     </head>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand disabled" href="." style="pointer-events: none">Turismo</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="." style="pointer-events: none">Turismo</a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link disabled" href="." style="pointer-events: none"><b>Inicio</b></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./ventas/">ventas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./servicios/">servicios</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./paquetes/">paquetes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./clientes/">clientes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./empleados/">empleados</a>
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="." style="pointer-events: none"><b>Inicio</b></a>
+                </li>
+                <li class="nav-item">
+                    <form action="./SvVenta" method="GET">
+                        <input class="nav-link" type="submit" value="ventas"/>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="./SvServicio" method="GET">
+                        <input class="nav-link" type="submit" value="servicios"/>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="./SvPaquete" method="GET">
+                        <input class="nav-link" type="submit" value="paquetes"/>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="./SvCliente" method="GET">
+                        <input class="nav-link" type="submit" value="clientes"/>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="./SvEmpleado" method="GET">
+                        <input class="nav-link" type="submit" value="empleados"/>
+                    </form>
+                </li>
+            </ul>
 
-        <form action="../SvLogout" method="POST">
-            <button class="btn btn-danger" type="submit"><i class="material-icons">logout</i></button>
-        </form>
-    </div>
-</nav>
+            <form action="../SvLogout" method="POST">
+                <button class="btn btn-danger" type="submit"><i class="material-icons">logout</i></button>
+            </form>
+        </div>
+    </nav>
 
     <body>
         <%
