@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import java.io.IOException;
@@ -21,52 +16,22 @@ import logica.Controladora;
 import logica.Empleado;
 import logica.Usuario;
 
-/**
- *
- * @author dcorb
- */
 @WebServlet(name = "SvCrearEmpleado", urlPatterns = {"/SvCrearEmpleado"})
 public class SvCrearEmpleado extends HttpServlet {
 
     Controladora control = new Controladora();
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -102,6 +67,7 @@ public class SvCrearEmpleado extends HttpServlet {
         // teoricamente esto nunca va a fallar, pero...
         try {
             fechaNac = parser.parse(request.getParameter("fecha-nac"));
+            emp.setFechaNac(fechaNac);
         } catch (ParseException ex) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('" + ex.getMessage() + "');");
@@ -112,6 +78,7 @@ public class SvCrearEmpleado extends HttpServlet {
         }
         try {
             sueldo = Double.parseDouble(request.getParameter("sueldo"));
+            emp.setSueldo(sueldo);
         } catch (NumberFormatException ex) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('" + ex.getMessage() + "');");
@@ -120,7 +87,6 @@ public class SvCrearEmpleado extends HttpServlet {
             
             response.sendRedirect("empleados/nuevo.jsp");
         }
-
         
         try {
             control.crearEmpleado(emp);
@@ -141,7 +107,7 @@ public class SvCrearEmpleado extends HttpServlet {
         if (paseEspecial == true) {
             sesion.setAttribute("usuario", emp);
             sesion.setAttribute("pase especial", false);
-            response.sendRedirect("empleados/nuevo.jsp");
+            response.sendRedirect(".");
         } else {
             response.sendRedirect("empleados/nuevo.jsp");
         }

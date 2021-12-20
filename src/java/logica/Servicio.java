@@ -1,7 +1,9 @@
 package logica;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import org.eclipse.persistence.annotations.AdditionalCriteria;
 
 @Entity
 @AdditionalCriteria("this.habilitado <> false")
 public class Servicio implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -27,6 +31,20 @@ public class Servicio implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
+    // lista de tipos disponibles
+    @Transient
+    private final static List<String> tipos = Arrays.asList(
+            "Hotel por noche/s",
+            "Alquiler de auto",
+            "Pasajes de colectivo",
+            "Pasajes de avión",
+            "Pasajes de tren",
+            "Excursiones",
+            "Entradas a Eventos"
+            );
+
+    ;
+
     public Servicio() {
     }
 
@@ -38,6 +56,10 @@ public class Servicio implements Serializable {
         this.precio = precio;
         this.tipo = tipo;
         this.fecha = fecha;
+    }
+
+    public static List<String> getTipos() {
+        return tipos;
     }
 
     public int getId() {
@@ -71,8 +93,7 @@ public class Servicio implements Serializable {
     public Boolean getHabilitado() {
         return habilitado;
     }
-    
-    
+
     public void setHabilitado(Boolean habilitado) {
         this.habilitado = habilitado;
     }
@@ -104,7 +125,5 @@ public class Servicio implements Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
-    
-    
+
 }

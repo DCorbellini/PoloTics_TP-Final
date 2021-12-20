@@ -23,7 +23,7 @@
                 </li>
                 <li class="nav-item">
                     <form action="./SvVenta" method="GET">
-                        <input class="nav-link" type="submit" value="ventas"/>
+                        <input class="nav-link" type="button" value="ventas"/>
                     </form>
                 </li>
                 <li class="nav-item">
@@ -62,14 +62,6 @@
                 response.sendRedirect("login.jsp");
             } else {
         %>
-
-        <h1>Hello World!</h1>
-        <h2>This is my first loop!</h2>
-        <% for (int i = 0; i < 10; ++i) { %>
-
-        <p>This embeded java is very similar to embeded ruby</p>            
-
-        <% } %>
 
 
         <form action="SvEmpleado" method="GET">

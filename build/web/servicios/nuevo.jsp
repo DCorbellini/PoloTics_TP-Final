@@ -1,10 +1,11 @@
+<%@page import="logica.Servicio"%>
 <%@page import="logica.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
         <link rel='stylesheet' type='text/css' media='screen' href='../assets/css/main.css'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -94,15 +95,13 @@
                         </div>
                         <div class="modal-body">
                             <label>Tipo</label>
-                            <select class="form-select" name="tipo" required>
-                                <option selected disabled hidden value="">Seleccione un tipo</option>
-                                <option value="Hotel por noche/s">Hotel por noche/s</option>
-                                <option value="Alquiler de auto">Alquiler de auto</option>
-                                <option value="Pasajes de colectivo">Pasajes de colectivo</option>
-                                <option value="Pasajes de avión">Pasajes de avión</option>
-                                <option value="Pasajes de tren">Pasajes de tren</option>
-                                <option value="Excursiones">Excursiones</option>
-                                <option value="Entradas a Eventos">Entradas a Eventos</option>
+                            <select id="selectTipo" class="form-select" name="tipo" required>
+                                <% 
+                                    Servicio ser = new Servicio();
+                                    for (String tipo : ser.getTipos()) { 
+                                %>
+                                <option value="<%= tipo %>"><%= tipo %></option>
+                                <% } %>
                             </select>
                         </div>
 

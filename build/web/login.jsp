@@ -1,9 +1,10 @@
+<%@page import="logica.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
         <link rel='stylesheet' type='text/css' media='screen' href='assets/css/main.css'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -14,6 +15,14 @@
     </head>
 
     <body>
+        <%
+            HttpSession sesion = request.getSession();
+            Empleado usuario = (Empleado) sesion.getAttribute("usuario");
+            if (usuario != null) {
+                response.sendRedirect(".");
+            } else {
+        %>
+        
         <div id="loginModal" class="form">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -38,6 +47,7 @@
                 </div>
             </div>
         </div>
+        <% } %>
     </body>
 
 </html>
