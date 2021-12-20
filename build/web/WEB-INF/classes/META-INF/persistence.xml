@@ -4,9 +4,9 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>logica.Cliente</class>
     <class>logica.Empleado</class>
-    <class>logica.Usuario</class>
     <class>logica.Paquete</class>
     <class>logica.Servicio</class>
+    <class>logica.Usuario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/turismo?serverTimezone=UTC"/>
