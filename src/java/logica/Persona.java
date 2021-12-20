@@ -9,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.eclipse.persistence.annotations.AdditionalCriteria;
 
 @MappedSuperclass
+@AdditionalCriteria("this.habilitado <> false")
 public abstract class Persona implements Serializable {
     
     @Id
@@ -25,6 +27,7 @@ public abstract class Persona implements Serializable {
     private String nacionalidad;
     private String celular;
     private String email;
+    private Boolean habilitado = true;
 
     @Temporal(TemporalType.DATE)
     private Date fechaNac;
@@ -81,6 +84,15 @@ public abstract class Persona implements Serializable {
         return email;
     }
 
+    public Boolean getHabilitado() {
+        return habilitado;
+    }
+    
+    
+    public void setHabilitado(Boolean habilitado) {
+        this.habilitado = habilitado;
+    }
+    
     public void setId(int id) {
         this.id = id;
     }

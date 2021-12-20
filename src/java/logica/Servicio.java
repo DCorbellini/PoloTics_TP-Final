@@ -9,8 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.eclipse.persistence.annotations.AdditionalCriteria;
 
 @Entity
+@AdditionalCriteria("this.habilitado <> false")
 public class Servicio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,6 +23,7 @@ public class Servicio implements Serializable {
     private String destino;
     private Double precio;
     private String tipo;
+    private Boolean habilitado = true;
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
@@ -63,6 +66,15 @@ public class Servicio implements Serializable {
 
     public Date getFecha() {
         return fecha;
+    }
+
+    public Boolean getHabilitado() {
+        return habilitado;
+    }
+    
+    
+    public void setHabilitado(Boolean habilitado) {
+        this.habilitado = habilitado;
     }
 
     public void setId(int id) {

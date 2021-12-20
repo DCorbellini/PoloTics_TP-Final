@@ -27,9 +27,22 @@ public class ControladoraPersistencia {
     }
 
     public void eliminarEmpleado(int id) {
+        Empleado emp = empJPA.findEmpleado(id);
+        
         try {
-            userJPA.destroy(empJPA.findEmpleado(id).getUser().getUser());
-            empJPA.destroy(id);
+            // no hago borrado logico en el user porque no veo motivo por el 
+            // cual mantener los usuarios luego de que dejan de usarse
+            // ademas de que haciendo borrado fisico despues pueden volver a ser
+            // usados por otros empleados
+            userJPA.destroy(emp.getUser().getUser());
+            
+            emp.setHabilitado(Boolean.FALSE);
+            try {
+                empJPA.edit(emp);
+            } catch (Exception ex) {
+                Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }

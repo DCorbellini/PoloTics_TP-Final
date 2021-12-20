@@ -11,14 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
+import org.eclipse.persistence.annotations.AdditionalCriteria;
 
 @Entity
+@AdditionalCriteria("this.habilitado <> false")
 public class Paquete implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Basic
     private Double precio;
+    private Boolean habilitado = true;
     @ManyToMany
     @JoinTable(name = "paquete_servicio", joinColumns = @JoinColumn(name = "id_paquete"), inverseJoinColumns = @JoinColumn(name = "id_servicio"))
     private List<Servicio> servicios;
@@ -56,6 +59,15 @@ public class Paquete implements Serializable {
 
     public static Double getDescuento() {
         return descuento;
+    }
+
+    public Boolean getHabilitado() {
+        return habilitado;
+    }
+    
+    
+    public void setHabilitado(Boolean habilitado) {
+        this.habilitado = habilitado;
     }
 
     public void setId(int id) {
