@@ -77,23 +77,27 @@ public class SvLogin extends HttpServlet {
             throws ServletException, IOException {
         
         Controladora control = new Controladora();
+        HttpSession sesion = request.getSession();
         
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
         
         Empleado emp = control.traerEmpleado(user, pass);
         
-        System.out.println(emp);
-        if (emp != null) {
-            HttpSession sesion = request.getSession();
+        if (emp == null) {
+            response.sendRedirect("login.jsp");
+        }
+        // no puede haber un empleado con id 0 en la base de datos
+        // por eso uso id 0 para marcar que no hay empleados cargados
+        else if (emp.getId() == 0) {
+            sesion.setAttribute("pase especial", true);
+            response.sendRedirect("empleados/nuevo.jsp");
+        }
+        else {
             sesion.setAttribute("usuario", emp);
             
             response.sendRedirect(".");
         }
-        else {
-            response.sendRedirect("login.jsp");
-        }
-        
         
     }
 

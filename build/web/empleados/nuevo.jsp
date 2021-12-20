@@ -59,7 +59,8 @@
         <%
             HttpSession sesion = request.getSession();
             Empleado usuario = (Empleado) sesion.getAttribute("usuario");
-            if (usuario == null) {
+            Boolean paseEspecial = (Boolean) sesion.getAttribute("pase especial");
+            if (usuario == null && paseEspecial != true) {
                 response.sendRedirect("../login.jsp");
             } else {
         %>
