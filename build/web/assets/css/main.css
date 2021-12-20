@@ -8,6 +8,17 @@ form {
     margin-bottom: 0px;
 }
 
+.container button {
+    font-size: 2rem;
+    height: 15rem;
+    width: 15rem;
+    margin: 10px;
+}
+
+.container button i {
+    font-size: 8rem;
+}
+
 .nav-link {
     background-color: transparent;
     border: transparent;

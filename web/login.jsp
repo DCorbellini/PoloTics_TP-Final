@@ -33,11 +33,11 @@
 
                         <div class="modal-body">
                             <label>Usuario</label>
-                            <input class="form-control" type="text" name="user" required>
+                            <input class="form-control" type="text" name="user">
                         </div>
                         <div class="modal-body">
                             <label>Contraseña</label>
-                            <input class="form-control" type="password" name="pass" required>
+                            <input class="form-control" type="password" name="pass">
                         </div>
 
                         <div class="modal-footer">
