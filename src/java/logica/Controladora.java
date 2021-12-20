@@ -192,4 +192,17 @@ public class Controladora {
     public List<Paquete> traerPaquetes() {
         return controlPersis.traerPaquetes();
     }
+
+    public void crearPaquete(List<Servicio> servicios) {
+        Paquete paq = new Paquete(0, servicios);
+        controlPersis.crearPaquete(paq);
+    }
+
+    public Paquete traerPaquete(int id) {
+        return controlPersis.traerPaquete(id);
+    }
+
+    public void editarPaquete(Paquete paquete) throws Exception {
+        controlPersis.editarPaquete(paquete);
+    }
 }

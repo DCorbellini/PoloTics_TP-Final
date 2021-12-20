@@ -134,4 +134,16 @@ public class ControladoraPersistencia {
         return paqJPA.findPaqueteEntities();
     }
 
+    public void crearPaquete(Paquete paq) {
+        paqJPA.create(paq);
+    }
+
+    public Paquete traerPaquete(int id) {
+        return paqJPA.findPaquete(id);
+    }
+
+    public void editarPaquete(Paquete paquete) throws Exception {
+        paqJPA.edit(paquete);
+    }
+
 }
