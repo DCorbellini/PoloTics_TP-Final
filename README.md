@@ -1,5 +1,5 @@
-# PoloTics_TP-Final
-Trabajo practico final del curso DESARROLLO WEB FULLSTACK CON JAVA
+# PoloTics - TP Final
+Trabajo practico final del curso DESARROLLO WEB FULLSTACK CON JAVA de PoloTics
 
 Una agencia de turismo necesita del desarrollo de una aplicación web para la venta de sus productos por parte de cada uno de sus empleados
 Para esto necesitan una base de datos que pueda almacenar Servicio turístico, Paquete turístico, Clientes, Empleados, y Ventas
