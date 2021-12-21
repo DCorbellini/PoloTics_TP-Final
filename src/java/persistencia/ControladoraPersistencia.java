@@ -115,17 +115,12 @@ public class ControladoraPersistencia {
     }
 
     public void eliminarCliente(int id) {
+        Cliente cli = cliJPA.findCliente(id);
+        
+        cli.setHabilitado(Boolean.FALSE);
         try {
-            cliJPA.destroy(id);
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void eliminarServicio(int id) {
-        try {
-            serJPA.destroy(id);
-        } catch (NonexistentEntityException ex) {
+            cliJPA.edit(cli);
+        } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -144,6 +139,36 @@ public class ControladoraPersistencia {
 
     public void editarPaquete(Paquete paquete) throws Exception {
         paqJPA.edit(paquete);
+    }
+
+    public void eliminarPaquete(int id) {
+        Paquete paq = paqJPA.findPaquete(id);
+        
+        paq.setHabilitado(Boolean.FALSE);
+        try {
+            paqJPA.edit(paq);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void eliminarServicio(int id) {
+        Servicio ser = serJPA.findServicio(id);
+        List<Paquete> paquetes = paqJPA.findPaqueteEntities();
+        
+        // eliminar paquetes que ofrezcan este servicio
+        for (Paquete paq : paquetes) {
+            if (paq.getServicios().contains(ser)) {
+                eliminarPaquete(paq.getId());
+            }
+        }
+        
+        ser.setHabilitado(Boolean.FALSE);
+        try {
+            serJPA.edit(ser);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

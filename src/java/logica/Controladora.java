@@ -200,4 +200,8 @@ public class Controladora {
     public void editarPaquete(Paquete paquete) throws Exception {
         controlPersis.editarPaquete(paquete);
     }
+
+    public void eliminarPaquete(int id) {
+        controlPersis.eliminarPaquete(id);
+    }
 }
