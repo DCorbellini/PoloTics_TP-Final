@@ -1,0 +1,3 @@
+- El usuario de este sistema tiene acceso a la base de datos de empleados y clientes y puede editarlas
+- La tabla de empleados no deberia mostrar la contraseña por cuestiones de seguridad
+- Los paquetes turisticos son creados por el empleado y no pueden ser customizados por el cliente
